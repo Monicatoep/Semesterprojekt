@@ -9,19 +9,19 @@
 </head>
 
 <body>
- <h1>Hejsa</h1>
+  <h1 class="text-center mt-4">Velkommen til Seasonal Stories!</h1>
 
-  <div id="app">
-    <div class="card" style="width: 18rem;" v-for="story in stories">
-      <div class="card-body">
-        <h5 class="card-title">{{story.title}}</h5>
-        <p class="card-text">{{story.description}}</p>
-        <a href="#" class="btn btn-primary">Read more</a>
-      </div>
-    </div>
+  <div id="app" class="container mt-4">
+    <!-- Dynamic Component -->
+    <component :is="currentComponent" 
+               :seasons="seasons" 
+               :season="selectedSeason" 
+               @show-folder="showFolder" 
+               @go-back="goBack">
+    </component>
   </div>
 
-<script src="JS/index.js"></script>
+  <script src="JS/index.js"></script>
 </body>
 
 </html>
