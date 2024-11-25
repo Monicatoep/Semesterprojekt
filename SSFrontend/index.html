@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en-US">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Seasonal Story</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+ <h1>Hejsa</h1>
+
+  <div id="app">
+    <div class="card" style="width: 18rem;" v-for="story in stories">
+      <div class="card-body">
+        <h5 class="card-title">{{story.title}}</h5>
+        <p class="card-text">{{story.description}}</p>
+        <a href="#" class="btn btn-primary">Read more</a>
+      </div>
+    </div>
+  </div>
+
+<script src="JS/index.js"></script>
+</body>
+
+</html>
