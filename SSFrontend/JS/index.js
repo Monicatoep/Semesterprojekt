@@ -1,6 +1,8 @@
 import SeasonList from './Components/seasonList.js';
 import SeasonFolder from './Components/seasonFolder.js';
-  
+
+const baseUrl = "https://seasonalstoryrest.azurewebsites.net/api/photos"
+
   Vue.createApp({
     components: {
       SeasonList,
@@ -15,7 +17,8 @@ import SeasonFolder from './Components/seasonFolder.js';
           { title: 'Efterår', description: '' },
           { title: 'Vinter', description: '' }
         ],
-        selectedSeason: null // For storing the selected season
+        selectedSeason: null, // For storing the selected season
+        addData: {}
       };
     },
     methods: {
@@ -26,6 +29,9 @@ import SeasonFolder from './Components/seasonFolder.js';
       goBack() {
         this.selectedSeason = null;
         this.currentComponent = 'SeasonList';
+      },
+      addPhoto(){
+
       }
     }
   }).mount('#app');
