@@ -1,7 +1,5 @@
 import SeasonList from './Components/seasonList.js';
 import SeasonFolder from './Components/seasonFolder.js';
-import addPhoto from './Components/addPhoto.js';
-import { ref } from 'vue';
 
 
 const baseUrl = "https://seasonalstoryrest.azurewebsites.net/api/photos"
@@ -9,8 +7,7 @@ const baseUrl = "https://seasonalstoryrest.azurewebsites.net/api/photos"
   Vue.createApp({
     components: {
       SeasonList,
-      SeasonFolder, 
-      AddPhoto
+      SeasonFolder
     },
     data() {
       return {
@@ -22,15 +19,15 @@ const baseUrl = "https://seasonalstoryrest.azurewebsites.net/api/photos"
           { title: 'Vinter', description: '' }
         ],
         selectedSeason: null, // For storing the selected season
-        addData: { selectedFile: null, temperature: 0, season: selectedSeason },
-        temperatureIntervals: [
-          {name: "Under 0°C", value: 0},
-          {name: "0-12°C", value: 1},
-          {name: "13-18°C", value: 2},
-          {name: "19-23°C", value: 3},
-          {name: "24-30°C", value: 4},
-          {name: "Over 30°C", value: 5},
-        ]
+        // addData: { selectedFile: null, temperature: 0, season: selectedSeason },
+        // temperatureIntervals: [
+        //   {name: "Under 0°C", value: 0},
+        //   {name: "0-12°C", value: 1},
+        //   {name: "13-18°C", value: 2},
+        //   {name: "19-23°C", value: 3},
+        //   {name: "24-30°C", value: 4},
+        //   {name: "Over 30°C", value: 5},
+        // ]
       };
     },
     methods: {
