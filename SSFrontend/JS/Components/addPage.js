@@ -58,7 +58,7 @@ export default {
 
       const fd = new FormData();
       
-      fd.append("Billede", this.selectedFile);
+      fd.append("UploadedImage", this.selectedFile);
       fd.append("PhotoSeason", this.addData.season);
       fd.append("PhotoTemp", this.addData.temperature);
 
