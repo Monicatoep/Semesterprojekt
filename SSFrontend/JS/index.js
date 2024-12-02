@@ -2,7 +2,6 @@ import SeasonList from './Components/seasonList.js';
 import SeasonFolder from './Components/seasonFolder.js';
 import AddPage from './Components/addPage.js';
 
-
 const baseUrl = "https://seasonalstoryrest.azurewebsites.net/api/photos"
 
   Vue.createApp({
@@ -13,7 +12,6 @@ const baseUrl = "https://seasonalstoryrest.azurewebsites.net/api/photos"
     },
     data() {
       return {
-        
         currentComponent: 'SeasonList', // Start with the SeasonList component
         seasons: [
           { title: 'Sommer', value: 0 },
@@ -25,8 +23,6 @@ const baseUrl = "https://seasonalstoryrest.azurewebsites.net/api/photos"
       };
     },
     methods: {
-
-    
       showFolder(season) {
         this.selectedSeason = season;
         this.currentComponent = 'SeasonFolder';
@@ -40,4 +36,3 @@ const baseUrl = "https://seasonalstoryrest.azurewebsites.net/api/photos"
       }
     }
   }).mount('#app');
-  

@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="en-US">
-
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>Seasonal Story</title>
@@ -11,7 +10,6 @@
 
 <body>
   <h1 class="text-center mt-4">Velkommen til Seasonal Stories!</h1>
-
   <div id="app" class="container mt-4">
     <!-- Dynamic Component -->
     <component :is="currentComponent" 
@@ -21,11 +19,8 @@
                @show-add-page="showAddPage"
                @go-back="goBack">
     </component>
-
-
   </div>
 
   <script type="module" src="JS/index.js"></script>
 </body>
-
 </html>

@@ -1,12 +1,11 @@
-//const baseUrl = "https://seasonalstoryrest.azurewebsites.net/api/photos"
-const baseUrl = "http://localhost:5122/api/photos";
+const baseUrl = "https://seasonalstoryrest.azurewebsites.net/api/photos"
+//const baseUrl = "http://localhost:5122/api/photos"; // Local testing, change to your own localhost
 
 export default {
   props: ['season'],
   template:
     /*html*/
     `
-    <!-- Radio Buttons for Selecting Temperatures -->
     <label>Vælg temperatur:</label>
     <div v-for="temp in temperatureIntervals" :key="temp.value">
       <input 
@@ -21,7 +20,7 @@ export default {
 
   <label>Vælg billede:</label>
       <div class="mb-3">
-        <label for="formFile" class="form-label">Billede:</label>
+        <label for="formFile" class="form-label"></label>
         <input 
           class="form-control" 
           type="file" 
@@ -29,15 +28,11 @@ export default {
           @change="onUpload" 
         />
       </div>
-
       <button class="btn btn-primary" @click="addPhoto">Upload Foto</button>
-
       <p v-if="addMessage">{{ addMessage }}</p>
-
-      {{addData}}
-
     </div>
   `,
+
   data() {
     return {
       addData: { temperature: 0, season: this.season.value },
@@ -53,19 +48,17 @@ export default {
       ]
     };
   },
+
   methods: {
     async addPhoto() {
       if (!this.selectedFile) {
-        this.addMessage = "Please select a file.";
+        this.addMessage = "Der mangler at blive valgt et billede.";
         return;
       }
 
       const fd = new FormData();
       
-      // Append the file directly
       fd.append("Billede", this.selectedFile);
-
-      // Append additional data
       fd.append("PhotoSeason", this.addData.season);
       fd.append("PhotoTemp", this.addData.temperature);
 
@@ -81,11 +74,11 @@ export default {
         console.error("Upload error:", error);
       }
     },
+
     onUpload(event) {
       const file = event.target.files[0];
       if (file) {
         this.selectedFile = file;
-        this.addMessage = `Selected File: ${file.name}`;
       } else {
         this.selectedFile = null;
         this.addMessage = "No file selected.";
