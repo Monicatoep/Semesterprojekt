@@ -1,6 +1,8 @@
 export default {
     props: ['seasons'],
-    template: `
+    template: 
+    /*html*/
+    `
       <div class="row">
         <div class="col-md-6 mb-4" v-for="season in seasons" :key="season.title">
           <div class="card border-0 text-center" style="width: 100%;">
