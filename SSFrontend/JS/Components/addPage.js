@@ -31,6 +31,7 @@ export default {
       <button class="btn btn-primary" @click="addPhoto">Upload Foto</button>
       <p v-if="addMessage">{{ addMessage }}</p>
     </div>
+    <button id="backButton" class="btn btn-secondary" @click="$emit('go-back')">Tilbage</button>
   `,
 
   data() {
