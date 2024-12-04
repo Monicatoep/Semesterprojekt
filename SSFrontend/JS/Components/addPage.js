@@ -1,5 +1,5 @@
-const baseUrl = "https://seasonalstoryrest.azurewebsites.net/api/photos"
-//const baseUrl = "http://localhost:5122/api/photos"; // Local testing, change to your own localhost
+//const baseUrl = "https://seasonalstoryrest.azurewebsites.net/api"
+const baseUrl = "http://localhost:5122/api"; // Local testing, change to your own localhost
 
 export default {
   props: ['season'],
@@ -28,6 +28,7 @@ export default {
           @change="onUpload" 
         />
       </div>
+      
       <button class="btn btn-primary" @click="addPhoto">Upload Foto</button>
       <p v-if="addMessage">{{ addMessage }}</p>
     </div>
@@ -38,7 +39,6 @@ export default {
     return {
       addData: { temperature: 0, season: this.season.value },
       selectedFile: null,
-      fakeImage: "https://images.photowall.com/products/60831/summer-park.jpg?h=699&q=85",
       addMessage: '',
       temperatureIntervals: [
         { name: "Under 0°C", value: 0 },
@@ -58,14 +58,42 @@ export default {
         return;
       }
 
+      //Var with 4 random letters
+      //We need to add this to the image name to make it unique
+      const randomLetter = Math.random().toString(36).substring(7);
+      //Adding v1/ to the image name to make it easier to identify files in the bucket. 
+      //We can update this to v2/ if we want to clean old files from the bucket easily by deleting the folder.
+      const randomFileName = "v1/" + randomLetter + this.selectedFile.name;
+
+      try {
+        // Step 1: Request a pre-signed URL from the backend using just the file name and type
+        const { data } = await axios.get(baseUrl + "/s3/get-presigned-url", {
+          params: {
+            fileName: randomFileName,
+            fileType: this.selectedFile.type,
+          },
+        });
+
+        const presignedUrl = data.url;
+
+        // Step 2: Upload the whole image file directly to S3
+        await axios.put(presignedUrl, this.selectedFile, {
+          headers: {
+            "Content-Type": this.selectedFile.type,
+          },
+        });
+      } catch (error) {
+        console.error("Error uploading file:", error);
+      }
+
       const fd = new FormData();
-      
-      fd.append("UploadedImage", this.fakeImage);
+      //The link that the image is accessible from after uploading to S3 is added to the form data
+      fd.append("UploadedImage", "https://zealandscience.s3.eu-west-1.amazonaws.com/" + randomFileName);
       fd.append("PhotoSeason", this.addData.season);
       fd.append("PhotoTemp", this.addData.temperature);
 
       try {
-        const response = await axios.post(baseUrl, fd, {
+        const response = await axios.post(baseUrl + "/photos", fd, {
           headers: {
             "Content-Type": "multipart/form-data"
           }
