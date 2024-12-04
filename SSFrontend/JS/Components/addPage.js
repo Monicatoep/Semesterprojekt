@@ -1,5 +1,5 @@
-// const baseUrl = "https://seasonalstoryrest.azurewebsites.net/api/photos"
-const baseUrl = "http://localhost:5122/api/photos"; // Local testing, change to your own localhost
+const baseUrl = "https://seasonalstoryrest.azurewebsites.net/api/photos"
+//const baseUrl = "http://localhost:5122/api/photos"; // Local testing, change to your own localhost
 
 export default {
   props: ['season'],
@@ -38,6 +38,7 @@ export default {
     return {
       addData: { temperature: 0, season: this.season.value },
       selectedFile: null,
+      fakeImage: "https://images.photowall.com/products/60831/summer-park.jpg?h=699&q=85",
       addMessage: '',
       temperatureIntervals: [
         { name: "Under 0°C", value: 0 },
@@ -59,7 +60,7 @@ export default {
 
       const fd = new FormData();
       
-      fd.append("UploadedImage", this.selectedFile);
+      fd.append("UploadedImage", this.fakeImage);
       fd.append("PhotoSeason", this.addData.season);
       fd.append("PhotoTemp", this.addData.temperature);
 
