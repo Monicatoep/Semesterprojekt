@@ -16,6 +16,7 @@ export default {
                 <div class="card-body">
                   <h5 class="card-title">Sæson: {{ getSeasonName(photo.photoSeason) }}</h5>
                   <p class="card-text">Temperaturinterval: {{ getTemperatureName(photo.photoTemp) }}</p>
+                  <button id="showDeletePageButton" class="btn btn-danger" @click="$emit('show-delete-page', photo)">Slet</button>
                 </div>
               </div>
             </div>
@@ -72,6 +73,7 @@ export default {
       // Map season enum value to name
       return this.seasonEnum[value] || "Unknown";
     }
+    
   },
 
   // Call getAllPhotos when the component is mounted

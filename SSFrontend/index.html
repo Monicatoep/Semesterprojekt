@@ -15,8 +15,10 @@
     <component :is="currentComponent" 
                :seasons="seasons" 
                :season="selectedSeason" 
+               :photo="selectedPhoto"
                @show-folder="showFolder" 
                @show-add-page="showAddPage"
+               @show-delete-page="showDeletePage"
                @go-back="goBack">
     </component>
   </div>

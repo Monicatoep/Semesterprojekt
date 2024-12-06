@@ -1,6 +1,7 @@
 import SeasonList from './Components/seasonList.js';
 import SeasonFolder from './Components/seasonFolder.js';
 import AddPage from './Components/addPage.js';
+import DeletePage from './Components/deletePage.js';
 
 const baseUrl = "https://seasonalstoryrest.azurewebsites.net/api/photos"
 
@@ -8,7 +9,8 @@ const baseUrl = "https://seasonalstoryrest.azurewebsites.net/api/photos"
     components: {
       SeasonList,
       SeasonFolder, 
-        AddPage
+      AddPage,
+      DeletePage
     },
     data() {
       return {
@@ -33,6 +35,10 @@ const baseUrl = "https://seasonalstoryrest.azurewebsites.net/api/photos"
       goBack() {
         this.selectedSeason = null;
         this.currentComponent = 'SeasonList';
+      },
+      showDeletePage(photo){
+        this.selectedPhoto = photo
+        this.currentComponent = 'DeletePage';
       }
     }
   }).mount('#app');
