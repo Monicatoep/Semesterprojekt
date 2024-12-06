@@ -1,5 +1,5 @@
-//const baseUrl = "https://seasonalstoryrest.azurewebsites.net/api"
-const baseUrl = "http://localhost:5122/api"; // Local testing, change to your own localhost
+const baseUrl = "https://seasonalstoryrest.azurewebsites.net/api"
+//const baseUrl = "http://localhost:5122/api"; // Local testing, change to your own localhost
 
 export default {
   props: ['season'],
