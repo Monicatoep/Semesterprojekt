@@ -4,9 +4,14 @@ export default {
     /*html*/
     `
       <div>
-        <h2>{{ season.title }}</h2>
-        <p>{{ season.description }}</p>
-        
+      <h2 class="text-center">{{ season.title }}</h2>
+      <p>{{ season.description }}</p>
+      
+      <div class="Button-container"> 
+        <button id="backButton" class="btn btn-secondary" @click="$emit('go-back')">Tilbage</button>
+        <button id="addButton" class="btn btn-secondary" @click="$emit('show-add-page', season)">Tilføj</button>
+      </div>
+
         <div class="container mt-4">
           <div class="row">
             <!-- Loop through filtered photos and create a card for each -->
@@ -23,8 +28,7 @@ export default {
           </div>
         </div>
 
-        <button id="backButton" class="btn btn-secondary" @click="$emit('go-back')">Tilbage</button>
-        <button id="addButton" class="btn btn-secondary" @click="$emit('show-add-page', season)">Tilføj</button>
+        
       </div>
     `,
 
@@ -82,4 +86,6 @@ export default {
     //const baseUrl = "http://localhost:5122/api/photos"; // Local testing, change to your own localhost
     this.helperGetAndShow(baseUrl);
   }
+  
+
 };
