@@ -8,12 +8,6 @@ const baseUrl = "https://seasonalstoryrest.azurewebsites.net/api/photos"
     data() {
       return {
         currentComponent: 'photo'
-  
-       
       };
     },
-    methods: {
-
-      
-    }
   }).mount('#app');
