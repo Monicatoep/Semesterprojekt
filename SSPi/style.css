@@ -1,0 +1,17 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center; /* Centrer vandret */
+    align-items: center;    /* Centrer lodret */
+    background-color: #000000; /* Sort baggrund for kontrast */
+    overflow: hidden; /* Fjern scrollbar */
+    cursor: none; /* Fjern cusor*/
+  }
+  
+  /* Tilpasset billede-styling */
+  img { 
+    max-width: 100%;  /* Gør billedet maksimalt lige så bredt som skærmen */
+    max-height: 100%; /* Gør billedet maksimalt lige så højt som skærmen */
+    object-fit: contain; /* Sikrer, at billedet fylder uden at forvrænge */
+  }
