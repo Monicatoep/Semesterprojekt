@@ -3,7 +3,9 @@ export default {
         template:
       /*html*/
       `
+      <div class="photo">
       <img :src="selectedPhoto.uploadedImage" class="card-img-top" alt="Photo" />
+      </div>
       `,
   
     data() {

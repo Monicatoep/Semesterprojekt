@@ -4,12 +4,15 @@ export default {
       /*html*/
       `
       
+      <div class="temperature">
+      {{temperature.value}}°C
+      </div>
       `,
   
     data() {
       return {
        
-        temperature  : Object,
+        temperature  : {},
       };
     }, 
     methods: {
