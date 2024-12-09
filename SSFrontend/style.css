@@ -1,0 +1,28 @@
+
+body{
+
+   background-color: #FFECC8; 
+}
+
+.button-container {
+    gap: 10px; /* Afstand mellem knapperne */
+    align-items: flex-start; /* Placér knapperne til venstre */
+    padding-left: 20px; /* Optional: Justér afstanden fra venstre kant */
+}
+
+#backButton{
+    background-color: #FFD09B;
+    display: block;
+    margin-bottom: 10px; /* Optional: Justér afstanden til næste element */
+
+
+}
+#addButton{
+    background-color: #FFB0B0;
+    display: block;   
+}
+#uploadButton {
+    background-color: #FFB0B0;
+    display: block;       
+    margin-bottom: 10px; /* Optional: Justér afstanden til næste element */
+}

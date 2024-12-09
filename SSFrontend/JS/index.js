@@ -3,6 +3,7 @@ import SeasonFolder from './Components/seasonFolder.js';
 import AddPage from './Components/addPage.js';
 import DeletePage from './Components/deletePage.js';
 
+
 const baseUrl = "https://seasonalstoryrest.azurewebsites.net/api/photos"
 
   Vue.createApp({
