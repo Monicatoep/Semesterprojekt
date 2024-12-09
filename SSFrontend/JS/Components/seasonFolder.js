@@ -16,10 +16,10 @@ export default {
           <div class="row">
             <!-- Loop through filtered photos and create a card for each -->
             <div class="col-lg-3 col-md-6 mb-4" v-for="photo in filteredPhotos" :key="photo.id">
-              <div class="card">
+              <div class="card-season">
                 <img :src="photo.uploadedImage" class="card-img-top" alt="Photo" />
                 <div class="card-body">
-                  <h5 class="card-title">Sæson: {{ getSeasonName(photo.photoSeason) }}</h5>
+                  <!--<h5 class="card-title">Sæson: {{ getSeasonName(photo.photoSeason) }}</h5>-->
                   <p class="card-text">Temperaturinterval: {{ getTemperatureName(photo.photoTemp) }}</p>
                   <button id="showDeletePageButton" class="btn btn-danger" @click="$emit('show-delete-page', photo)">Slet</button>
                 </div>

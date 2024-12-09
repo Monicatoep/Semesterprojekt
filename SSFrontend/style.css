@@ -21,8 +21,39 @@ body{
     background-color: #FFB0B0;
     display: block;   
 }
+
+.card-season {
+    display: flex;
+    flex-direction: column; /* Sørg for, at billedet og teksten ligger lodret */
+    height: 100%; /* Kortene skal have samme højde */
+    border: 1px solid #ddd; /* Let kant omkring kortene */
+    background-color: azure;
+  }
+  
+  .card-img-top {
+    object-fit: cover; /* Sørg for, at billedet fylder kortet uden at forvrænge */
+    height: 200px; /* Fast højde for billederne, så de er ens */
+    width: 100%; /* Billedet fylder hele bredden af kortet */
+  }
+  
+  .card-body {
+    flex-grow: 1; /* Sørg for, at tekstområdet fylder den resterende plads */
+  }
+  
+  .card-text {
+    font-size: 14px; /* Juster tekststørrelsen for konsistens */
+  }
+  
+  .card-footer {
+    display: flex;
+    justify-content: flex-end; /* Sørg for, at knappen er til højre */
+  }
+  
+
 #uploadButton {
     background-color: #FFB0B0;
     display: block;       
     margin-bottom: 10px; /* Optional: Justér afstanden til næste element */
 }
+
+
