@@ -7,8 +7,8 @@ body, html {
   justify-content: center; /* Centrer vandret */
   align-items: center;    /* Centrer lodret */
   background-color: black; /* Baggrundsfarve */
-  /*overflow: hidden; Fjern scrollbar */
-  /*cursor: none;*/
+  overflow: hidden; /* Fjern scrollbar */
+  cursor: none;
 }
 
 /* Photo-container holder både billede og temperatur */
