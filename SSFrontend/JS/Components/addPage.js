@@ -29,7 +29,7 @@ export default {
         />
       </div>
       <button id="uploadButton" class="btn btn-primary" @click="addPhoto">Upload Foto</button>
-      <p v-if="addMessage">{{ addMessage }}</p>
+      <p id="outputMessage" v-if="addMessage">{{ addMessage }}</p>
     </div>
     <button id="backButton" class="btn btn-secondary" @click="$emit('go-back')">Tilbage</button>
   `,
