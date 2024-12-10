@@ -17,7 +17,7 @@ export default {
         <img :src="photo.uploadedImage" class="card-img-top" alt="Photo" />
         <div class="d-flex justify-content-between mt-4">
           <button class="btn btn-secondary" @click="$emit('go-back')">Fortryd</button>
-          <button class="btn btn-danger" @click="(deletePhoto(photo.id))">Slet</button>
+          <button id="deleteButton" class="btn btn-danger" @click="(deletePhoto(photo.id))">Slet</button>
         </div>
       </div>
     `,
