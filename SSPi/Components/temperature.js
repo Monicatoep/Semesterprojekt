@@ -28,6 +28,8 @@ export default {
  
     },
     mounted() {
-        this.helperGetAndShow();
+      setInterval(() => {
+        this.helperGetAndShow(); // Skift temperatur hvert 10. sekund
+      }, 10000); 
       }
     };
