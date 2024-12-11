@@ -1,3 +1,5 @@
+import temperature from "./temperature";
+
 const baseUrl = "https://seasonalstoryrest.azurewebsites.net/api/photos";
 export default {
         template:
@@ -19,7 +21,7 @@ export default {
       async helperGetAndShow() {
         try {
         this.counter = 0
-          const response = await axios.get(baseUrl);
+          const response = await axios.get(baseUrl + "?seasonEnabled=enable&temperatureInterval="+temperature.temperature.value.toString());
           this.photos = response.data;
           this.selectedPhoto = this.photos[0]
         } catch (ex) {
@@ -33,12 +35,14 @@ export default {
         }
     },
     mounted() {
+      //setInterval(() => {
         this.helperGetAndShow().then(() => {
           if (this.photos.length > 0) {
             setInterval(() => {
               this.slideshow(); // Start slideshowet og skift hvert 10. sekund
-            }, 10000); // 10000 ms = 10 sekunder
+            }, 5000); // 10000 ms = 10 sekunder
           }
         });
+      //}, 60000); 
       }
     };
