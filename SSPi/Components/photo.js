@@ -1,3 +1,5 @@
+import temperature from "./temperature";
+
 const baseUrl = "https://seasonalstoryrest.azurewebsites.net/api/photos";
 export default {
    props : {
@@ -48,6 +50,7 @@ export default {
         }
     },
     mounted() {
+      //setInterval(() => {
         this.helperGetAndShow().then(() => {
           if (this.photos.length > 0) {
             setInterval(() => {
@@ -56,5 +59,6 @@ export default {
           }
           setInterval(()=> this.helperGetAndShow(),10000)
         });
+      //}, 60000); 
       }
     };
