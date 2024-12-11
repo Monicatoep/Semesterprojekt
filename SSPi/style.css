@@ -6,7 +6,7 @@ body, html {
   display: flex;
   justify-content: center; /* Centrer vandret */
   align-items: center;    /* Centrer lodret */
-  background-color: black; /* Baggrundsfarve */
+  background-color: rgb(0, 0, 0); /* Baggrundsfarve */
   overflow: hidden; /* Fjern scrollbar */
   cursor: none;
 }

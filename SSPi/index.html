@@ -11,10 +11,12 @@
 
 <body>
     <div id="app">
-      <!-- Dynamic Component -->
+     
       <div class="photo-container">
-      <photo></photo>
-      <temperature></temperature>
+      <photo :temperature ="temperature"></photo>
+      <div class="temperature">
+        {{temperature.value}}°C
+        </div>
       </div>
     </div>
     <script type="module" src="index.js"></script>

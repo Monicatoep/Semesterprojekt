@@ -1,8 +1,14 @@
 const baseUrl = "https://seasonalstoryrest.azurewebsites.net/api/photos";
 export default {
+   props : {
+        temperature :{
+            type: Object,
+            required: true,
+        }
+   },
         template:
       /*html*/
-      `
+      ` 
       <div class="photo">
       <img :src="selectedPhoto.uploadedImage" class="card-img-top" alt="Photo" />
       </div>
@@ -12,14 +18,23 @@ export default {
       return {
         photos: [],
         selectedPhoto  : Object,
-        counter: 0
+        counter: 0,
+       tempString :"test"
       };
     }, 
     methods: {
+        async waitForTemperature() {
+            // Vent, indtil temperature.value er defineret
+            while (!this.temperature || typeof this.temperature.value === "undefined") {
+              await new Promise(resolve => setTimeout(resolve, 10000)); // Vent 100ms
+            }
+        },
       async helperGetAndShow() {
         try {
+            await this.waitForTemperature();
         this.counter = 0
-          const response = await axios.get(baseUrl);
+
+          const response = await axios.get(baseUrl+"?seasonEnabled=enable&temperatureInterval="+this.temperature.value.toString());
           this.photos = response.data;
           this.selectedPhoto = this.photos[0]
         } catch (ex) {
@@ -37,8 +52,9 @@ export default {
           if (this.photos.length > 0) {
             setInterval(() => {
               this.slideshow(); // Start slideshowet og skift hvert 10. sekund
-            }, 10000); // 10000 ms = 10 sekunder
+            }, 2000); // 10000 ms = 10 sekunder
           }
+          setInterval(()=> this.helperGetAndShow(),10000)
         });
       }
     };
