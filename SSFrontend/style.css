@@ -14,12 +14,20 @@ body{
     background-color: #FFD09B;
     display: block;
     margin-bottom: 10px; /* Optional: Justér afstanden til næste element */
-
-
+    color:black;
 }
+
 #addButton{
     background-color: #FFB0B0;
-    display: block;   
+    display: block; 
+    color:black;  
+}
+
+#uploadButton {
+  background-color: #FFB0B0;
+  display: block;       
+  margin-bottom: 10px; /* Optional: Justér afstanden til næste element */
+  color:black;
 }
 
 .card-season {
@@ -48,12 +56,35 @@ body{
     display: flex;
     justify-content: flex-end; /* Sørg for, at knappen er til højre */
   }
-  
 
-#uploadButton {
-    background-color: #FFB0B0;
-    display: block;       
-    margin-bottom: 10px; /* Optional: Justér afstanden til næste element */
+.temperature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 kolonner */
+  gap: 16px; /* Afstand mellem elementerne */
+  
 }
+
+.form-group {
+  display: flex;
+  align-items: center; /* Vertikalt center */
+}
+
+.form-group label {
+  margin-right: 0; /* Ingen afstand mellem label og input */
+}
+
+.header-large {
+  font-size: 1.0rem; /* Gør teksten større */
+  font-weight: bold; /* Gør teksten fed (valgfrit) */
+  margin-bottom: 0.5rem; /* Tilføj lidt afstand nedenunder (valgfrit) */
+}
+
+.temperature-item label {
+  margin-left: 8px; /* Tilføjer mellemrum mellem radio-knappen og teksten */
+}
+
+
+
+
 
 

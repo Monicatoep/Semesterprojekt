@@ -6,29 +6,36 @@ export default {
   template:
     /*html*/
     `
-    <label>Vælg temperatur:</label>
-    <div v-for="temp in temperatureIntervals" :key="temp.value">
-      <input 
-        type="radio" 
-        :id="'temp-' + temp.value" 
-        :value="temp.value" 
-        v-model="addData.temperature" 
-      />
-      <label :for="'temp-' + temp.value">{{ temp.name }}</label>
+    <div>
+    <label class="header-large">Vælg temperatur:</label>
+    <div class="temperature-grid">
+      <div v-for="temp in temperatureIntervals" :key="temp.value" class="temperature-item">
+        <input 
+          type="radio" 
+          :id="'temp-' + temp.value" 
+          :value="temp.value" 
+          v-model="addData.temperature" 
+        />
+        <label :for="'temp-' + temp.value">{{ temp.name }}</label>
+      </div>
     </div>
   </div>
+  
+  <br>
+  
+  <div class="form-group d-flex align-items-center mb-3">
+    <label for="formFile" class="header-large me-0">Vælg billede:</label>
+    <input 
+      class="form-control" 
+      type="file" 
+      id="formFile" 
+      @change="onUpload" 
+    />
+  </div>
+  <button id="uploadButton" class="btn btn-primary" @click="addPhoto">Upload Foto</button>
+  
 
-  <label>Vælg billede:</label>
-      <div class="mb-3">
-        <label for="formFile" class="form-label"></label>
-        <input 
-          class="form-control" 
-          type="file" 
-          id="formFile" 
-          @change="onUpload" 
-        />
-      </div>
-      <button id="uploadButton" class="btn btn-primary" @click="addPhoto">Upload Foto</button>
+
       <p id="outputMessage" v-if="addMessage">{{ addMessage }}</p>
     </div>
     <button id="backButton" class="btn btn-secondary" @click="$emit('go-back')">Tilbage</button>
