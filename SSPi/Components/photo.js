@@ -1,5 +1,3 @@
-import temperature from "./temperature";
-
 const baseUrl = "https://seasonalstoryrest.azurewebsites.net/api/photos";
 export default {
    props : {
