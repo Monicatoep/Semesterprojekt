@@ -21,6 +21,7 @@ export default {
                 <div class="card-body">
                   <!--<h5 class="card-title">Sæson: {{ getSeasonName(photo.photoSeason) }}</h5>-->
                   <p class="card-text">Temperaturinterval: {{ getTemperatureName(photo.photoTemp) }}</p>
+                  <p class="card-text">Dato for tilføjelse: {{ formatDate(photo.dateAdded) }}</p>
                   <button id="showDeletePageButton" class="btn btn-danger" @click="$emit('show-delete-page', photo)">Slet</button>
                 </div>
               </div>
@@ -76,6 +77,11 @@ export default {
     getSeasonName(value) {
       // Map season enum value to name
       return this.seasonEnum[value] || "Unknown";
+    }, 
+    formatDate(dateString) {
+      // Reformat the date from YYYY-MM-DD to DD/MM/YYYY
+      const [year, month, day] = dateString.split('-');
+      return `${day}/${month}/${year}`;
     }
     
   },
