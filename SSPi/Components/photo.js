@@ -17,7 +17,7 @@ export default {
     data() {
       return {
         photos: [],
-        selectedPhoto  : Object,
+        selectedPhoto  : {uploadedImage :'https://zealandscience.s3.eu-west-1.amazonaws.com/staticphotos/DefaultSeasonalStory.png'},
         counter: 0,
        tempString :"test"
       };
@@ -34,9 +34,16 @@ export default {
             await this.waitForTemperature();
         this.counter = 0
 
-          const response = await axios.get(baseUrl+"?seasonEnabled=enable&temperatureInterval="+this.temperature.value.toString());
+          const response = await axios.get(baseUrl+"?seasonEnabled=enable&temperatureInterval="
+                                          +this.temperature.value.toString() , 
+                                          {validateStatus: function(status) {return status < 500}});
+          if (response.status === 404) {
+          this.selectedPhoto.uploadedImage = 'https://zealandscience.s3.eu-west-1.amazonaws.com/staticphotos/NoPhotosSeasonalStory.png';
+          }
+          else {
           this.photos = response.data;
           this.selectedPhoto = this.photos[0]
+          }
         } catch (ex) {
           alert(ex.message);
         }
