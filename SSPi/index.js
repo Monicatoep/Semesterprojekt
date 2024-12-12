@@ -12,6 +12,7 @@ const baseUrl = "https://seasonalstoryrest.azurewebsites.net/api/temperatures"
        
             temperature  : {},
             currentTime : "",
+             currentDate: "",
           };
       
     },    methods: {
@@ -24,9 +25,10 @@ const baseUrl = "https://seasonalstoryrest.azurewebsites.net/api/temperatures"
             alert(ex.message);
           }
         },
-        updateTime(){
+        updateTimeAndDate() {
           const now = new Date();
-          this.currentTime = now.toLocaleTimeString(); //formate time to string
+          this.currentTime = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }); // Time uden sekunder
+          this.currentDate = now.toLocaleDateString(); // Format date
         }
    
       },
@@ -34,9 +36,9 @@ const baseUrl = "https://seasonalstoryrest.azurewebsites.net/api/temperatures"
           this.helperGetAndShow();
           setInterval(() => this.helperGetAndShow(),10000);
         
-        this.updateTime(); //initial call time
-        setInterval(() => {
-          this.updateTime();
-        }, 1000);
+          this.updateTimeAndDate(); // Initial call
+          setInterval(() => {
+            this.updateTimeAndDate();
+          }, 1000); // Update every second
       },        
   }).mount('#app');
