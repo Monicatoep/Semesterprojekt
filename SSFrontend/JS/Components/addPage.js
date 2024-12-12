@@ -6,6 +6,9 @@ export default {
   template:
     /*html*/
     `
+    <h1 class="text-center mt-4">Tilføj dine minder</h1>
+    <h2 class="text-center">{{ season.title }}</h2>
+
     <div>
     <label class="header-large">Vælg temperatur:</label>
     <div class="temperature-grid">

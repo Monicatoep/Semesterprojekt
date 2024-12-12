@@ -3,6 +3,7 @@ export default {
   template:
     /*html*/
     `
+    <h1 class="text-center mt-4">Dine minder</h1>
       <div>
       <h2 class="text-center">{{ season.title }}</h2>
       <p>{{ season.description }}</p>

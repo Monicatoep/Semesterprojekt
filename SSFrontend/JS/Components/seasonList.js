@@ -3,6 +3,7 @@ export default {
     template: 
     /*html*/
     `
+    <h1 class="text-center mt-4">Velkommen til Seasonal Stories!</h1>
       <div class="row">
         <div class="col-md-6 mb-4" v-for="season in seasons" :key="season.title">
           <div class="card border-0 text-center" style="width: 100%;">
