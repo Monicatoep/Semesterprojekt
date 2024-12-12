@@ -35,12 +35,19 @@ export default {
       @change="onUpload" 
     />
   </div>
+  <br>
   <button id="uploadButton" class="btn btn-primary" @click="addPhoto">Upload Foto</button>
   
 
 
       <p id="outputMessage" v-if="addMessage">{{ addMessage }}</p>
-    </div>
+      <!-- Pop-up modal -->
+      <div v-if="showPopup" class="popup-overlay">
+        <div class="popup">
+          <p>{{ popupMessage }}</p>
+          <button class="btn btn-secondary" @click="closePopup">OK</button>
+        </div>
+      </div>
     <button id="backButton" class="btn btn-secondary" @click="$emit('go-back')">Tilbage</button>
   `,
 
@@ -49,6 +56,8 @@ export default {
       addData: { temperature: 0, season: this.season.value },
       selectedFile: null,
       addMessage: '',
+      showPopup: false,
+      popupMessage: "",
       temperatureIntervals: [
         { name: "Under 0°C", value: 0 },
         { name: "0-12°C", value: 1 },
@@ -63,7 +72,7 @@ export default {
   methods: {
     async addPhoto() {
       if (!this.selectedFile) {
-        this.addMessage = "Der mangler at blive valgt et billede.";
+        this.showPopupMessage("Der mangler at blive valgt et billede.");
         return;
       }
 
@@ -93,6 +102,8 @@ export default {
         });
       } catch (error) {
         console.error("Error uploading file:", error);
+        this.showPopupMessage("Der skete en fejl under upload af filen.");
+        return;
       }
 
       const fd = new FormData();
@@ -107,10 +118,11 @@ export default {
             "Content-Type": "multipart/form-data"
           }
         });
-        this.addMessage = `Response: ${response.status} ${response.statusText}`;
+        this.showPopupMessage(`Succes: Billedet er uploadet`);
       } catch (error) {
-        this.addMessage = `Error: ${error.message}`;
         console.error("Upload error:", error);
+        this.showPopupMessage(
+      `Fejl: Der opstod en fejl ved upload.${error.message}`);
       }
     },
 
@@ -120,8 +132,17 @@ export default {
         this.selectedFile = file;
       } else {
         this.selectedFile = null;
-        this.addMessage = "No file selected.";
+        this.showPopupMessage = "No file selected.";
       }
-    }
-  }
+    },
+    showPopupMessage(message) {
+      this.popupMessage = message;
+      this.showPopup = true;
+    },
+
+    closePopup() {
+      this.showPopup = false;
+      this.popupMessage = "";
+  },
+},
 };
