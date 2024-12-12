@@ -74,8 +74,7 @@ export default {
     
     resetForm() {
       this.addData = { temperature: 0 };  // Nulstil addData
-      this.selectedFile = null;  // Fjern valgt billede
-
+    
       // Nulstil file input-feltet
     this.$nextTick(() => {
       if (this.$refs.fileInput) {
