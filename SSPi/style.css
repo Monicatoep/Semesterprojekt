@@ -25,7 +25,7 @@ body, html {
 .temperature {
   position: fixed;
   color: white;
-  font-size: 48px; /* Størrelse på temperatur */
+  font-size: 30px; /* Størrelse på temperatur */
   background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent baggrund for bedre synlighed */
   padding: 15px;
   top: 0px;  /* Juster temperaturens vertikale position */
@@ -42,7 +42,7 @@ img {
 .time {
   position: fixed;
   color: white;
-  font-size: 48px; /* Samme størrelse som temperaturen */
+  font-size: 30px; /* Samme størrelse som temperaturen */
   background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent baggrund */
   padding: 15px;
   top: 0px;   /* Juster tidens vertikale position */
@@ -53,7 +53,7 @@ img {
 .date {
   position: fixed;
   color: white;
-  font-size: 48px; /* Samme størrelse som temperatur og tid */
+  font-size: 30px; /* Samme størrelse som temperatur og tid */
   background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent baggrund */
   padding: 15px;
   top: 0px; /* Juster datoens vertikale position */
