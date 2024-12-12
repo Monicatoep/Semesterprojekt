@@ -29,6 +29,7 @@ export default {
   <div class="form-group d-flex align-items-center mb-3">
     <label for="formFile" class="header-large me-0">Vælg billede:</label>
     <input 
+    ref="fileInput"  
       class="form-control" 
       type="file" 
       id="formFile" 
@@ -70,6 +71,18 @@ export default {
   },
 
   methods: {
+    
+    resetForm() {
+      this.addData = { temperature: 0 };  // Nulstil addData
+      this.selectedFile = null;  // Fjern valgt billede
+
+      // Nulstil file input-feltet
+    this.$nextTick(() => {
+      if (this.$refs.fileInput) {
+        this.$refs.fileInput.value = '';  // Nulstil file input
+      }
+    });
+    },
     async addPhoto() {
       if (!this.selectedFile) {
         this.showPopupMessage("Der mangler at blive valgt et billede.");
@@ -119,6 +132,8 @@ export default {
           }
         });
         this.showPopupMessage(`Succes: Billedet er uploadet`);
+          // Nulstil formularen efter upload
+        this.resetForm();
       } catch (error) {
         console.error("Upload error:", error);
         this.showPopupMessage(
