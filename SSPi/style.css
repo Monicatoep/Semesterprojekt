@@ -50,4 +50,17 @@ img {
   text-align: center;
 }
 
+.date {
+  position: fixed;
+  color: white;
+  font-size: 48px; /* Samme størrelse som temperatur og tid */
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent baggrund */
+  padding: 15px;
+  top: 0px; /* Juster datoens vertikale position */
+  left: 50%; /* Centrer vandret */
+  transform: translateX(-50%); /* Centrer præcist ved at rykke halv bredde tilbage */
+  text-align: center;
+}
+
+
   
