@@ -23,6 +23,13 @@ body{
     color:black;  
 }
 
+#backButtonAddPage{
+  background-color: #FFD09B;
+  display: block;
+  margin-bottom: 10px; /* Optional: Justér afstanden til næste element */
+  color:black;
+}
+
 #uploadButton {
   background-color: #FFB0B0;
   display: block;       

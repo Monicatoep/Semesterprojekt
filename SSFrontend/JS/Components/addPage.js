@@ -10,6 +10,8 @@ export default {
     <h2 class="text-center">{{ season.title }}</h2>
 
     <div>
+    <button id="backButtonAddPage" class="btn btn-secondary" @click="$emit('go-back')">Tilbage</button>
+    <br>
     <label class="header-large">Vælg temperatur:</label>
     <div class="temperature-grid">
       <div v-for="temp in temperatureIntervals" :key="temp.value" class="temperature-item">
@@ -49,7 +51,6 @@ export default {
           <button class="btn btn-secondary" @click="closePopup">OK</button>
         </div>
       </div>
-    <button id="backButton" class="btn btn-secondary" @click="$emit('go-back')">Tilbage</button>
   `,
 
   data() {
