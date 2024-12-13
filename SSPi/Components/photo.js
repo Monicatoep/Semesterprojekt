@@ -62,7 +62,7 @@ export default {
               this.slideshow(); // Start slideshowet og skift hvert 10. sekund
             }, 10000); // 10000 ms = 10 sekunder
           }
-          setInterval(()=> this.helperGetAndShow(),10000)
+          setInterval(()=> this.helperGetAndShow(),60000)
         });
       //}, 60000); 
       }
