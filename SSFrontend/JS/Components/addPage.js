@@ -6,7 +6,12 @@ export default {
   template:
     /*html*/
     `
+    <h1 class="text-center mt-4">Tilføj dine minder</h1>
+    <h2 class="text-center">{{ season.title }}</h2>
+
     <div>
+    <button id="backButtonAddPage" class="btn btn-secondary" @click="$emit('go-back')">Tilbage</button>
+    <br>
     <label class="header-large">Vælg temperatur:</label>
     <div class="temperature-grid">
       <div v-for="temp in temperatureIntervals" :key="temp.value" class="temperature-item">
@@ -26,19 +31,26 @@ export default {
   <div class="form-group d-flex align-items-center mb-3">
     <label for="formFile" class="header-large me-0">Vælg billede:</label>
     <input 
+    ref="fileInput"  
       class="form-control" 
       type="file" 
       id="formFile" 
       @change="onUpload" 
     />
   </div>
+  <br>
   <button id="uploadButton" class="btn btn-primary" @click="addPhoto">Upload Foto</button>
   
 
 
       <p id="outputMessage" v-if="addMessage">{{ addMessage }}</p>
-    </div>
-    <button id="backButton" class="btn btn-secondary" @click="$emit('go-back')">Tilbage</button>
+      <!-- Pop-up modal -->
+      <div v-if="showPopup" class="popup-overlay">
+        <div class="popup">
+          <p>{{ popupMessage }}</p>
+          <button class="btn btn-secondary" @click="closePopup">OK</button>
+        </div>
+      </div>
   `,
 
   data() {
@@ -46,6 +58,8 @@ export default {
       addData: { temperature: 0, season: this.season.value },
       selectedFile: null,
       addMessage: '',
+      showPopup: false,
+      popupMessage: "",
       temperatureIntervals: [
         { name: "Under 0°C", value: 0 },
         { name: "0-12°C", value: 1 },
@@ -58,9 +72,20 @@ export default {
   },
 
   methods: {
+    
+    resetForm() {
+      this.addData = { temperature: 0 };  // Nulstil addData
+    
+      // Nulstil file input-feltet
+    this.$nextTick(() => {
+      if (this.$refs.fileInput) {
+        this.$refs.fileInput.value = '';  // Nulstil file input
+      }
+    });
+    },
     async addPhoto() {
       if (!this.selectedFile) {
-        this.addMessage = "Der mangler at blive valgt et billede.";
+        this.showPopupMessage("Der mangler at blive valgt et billede.");
         return;
       }
 
@@ -90,6 +115,8 @@ export default {
         });
       } catch (error) {
         console.error("Error uploading file:", error);
+        this.showPopupMessage("Der skete en fejl under upload af filen.");
+        return;
       }
 
       const fd = new FormData();
@@ -104,10 +131,13 @@ export default {
             "Content-Type": "multipart/form-data"
           }
         });
-        this.addMessage = `Response: ${response.status} ${response.statusText}`;
+        this.showPopupMessage(`Succes: Billedet er uploadet`);
+          // Nulstil formularen efter upload
+        this.resetForm();
       } catch (error) {
-        this.addMessage = `Error: ${error.message}`;
         console.error("Upload error:", error);
+        this.showPopupMessage(
+      `Fejl: Der opstod en fejl ved upload.${error.message}`);
       }
     },
 
@@ -117,8 +147,17 @@ export default {
         this.selectedFile = file;
       } else {
         this.selectedFile = null;
-        this.addMessage = "No file selected.";
+        this.showPopupMessage = "No file selected.";
       }
-    }
-  }
+    },
+    showPopupMessage(message) {
+      this.popupMessage = message;
+      this.showPopup = true;
+    },
+
+    closePopup() {
+      this.showPopup = false;
+      this.popupMessage = "";
+  },
+},
 };

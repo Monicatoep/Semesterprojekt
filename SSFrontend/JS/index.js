@@ -16,6 +16,7 @@ const baseUrl = "https://seasonalstoryrest.azurewebsites.net/api/photos"
     data() {
       return {
         currentComponent: 'SeasonList', // Start with the SeasonList component
+        previousComponent: null, // Gemmer den forrige komponent
         seasons: [
           { title: 'Sommer', value: 0 },
           { title: 'Efterår', value: 1 },
@@ -31,11 +32,15 @@ const baseUrl = "https://seasonalstoryrest.azurewebsites.net/api/photos"
         this.currentComponent = 'SeasonFolder';
       },
       showAddPage() {
+        this.previousComponent = this.currentComponent; // Gem nuværende komponent
         this.currentComponent = 'AddPage';
       },
       goBack() {
-        this.selectedSeason = null;
-        this.currentComponent = 'SeasonList';
+        if (this.currentComponent === 'AddPage' && this.previousComponent === 'SeasonFolder') {
+          this.currentComponent = 'SeasonFolder'; // Gå tilbage til SeasonFolder
+        } else {
+          this.currentComponent = 'SeasonList'; // Standard fallback
+        }
       },
       showDeletePage(photo){
         this.selectedPhoto = photo
