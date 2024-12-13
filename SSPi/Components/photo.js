@@ -60,7 +60,7 @@ export default {
           if (this.photos.length > 0) {
             setInterval(() => {
               this.slideshow(); // Start slideshowet og skift hvert 10. sekund
-            }, 2000); // 10000 ms = 10 sekunder
+            }, 10000); // 10000 ms = 10 sekunder
           }
           setInterval(()=> this.helperGetAndShow(),10000)
         });
