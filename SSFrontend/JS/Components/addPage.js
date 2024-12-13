@@ -45,7 +45,7 @@ export default {
 
       <p id="outputMessage" v-if="addMessage">{{ addMessage }}</p>
       <!-- Pop-up modal -->
-      <div v-if="showPopup" class="popup-overlay">
+      <div id= "popUpMessage" v-if="showPopup" class="popup-overlay">
         <div class="popup">
           <p>{{ popupMessage }}</p>
           <button class="btn btn-secondary" @click="closePopup">OK</button>
